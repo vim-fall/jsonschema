@@ -4,6 +4,9 @@
   "description": "The configuration for the picker.",
   "type": "object",
   "properties": {
+    "$schema": {
+      "type": "string"
+    },
     "source": {
       "type": "object",
       "additionalProperties": {
