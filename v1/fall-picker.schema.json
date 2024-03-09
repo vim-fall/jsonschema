@@ -1,5 +1,5 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schema": "https://json-schema.org/draft-07/schema#",
   "title": "PickerConfig",
   "description": "The configuration for the picker.",
   "type": "object",
@@ -14,20 +14,15 @@
       "$ref": "#/$defs/actionPickerConfig"
     }
   },
+  "additionalProperties": false,
   "$defs": {
     "stringBorder": {
       "type": "string",
-      "enum": [
-        "none",
-        "ascii",
-        "single",
-        "double",
-        "rounded"
-      ]
+      "enum": ["none", "ascii", "single", "double", "rounded"]
     },
     "sourcePickerLayoutBorder": {
       "type": "array",
-      "prefixItems": [
+      "items": [
         {
           "title": "topleft",
           "type": "string"
@@ -72,8 +67,7 @@
           "title": "rightsep",
           "type": "string"
         }
-      ],
-      "items": false
+      ]
     },
     "sourcePickerLayoutParams": {
       "type": "object",
@@ -240,7 +234,7 @@
     },
     "actionPickerLayoutBorder": {
       "type": "array",
-      "prefixItems": [
+      "items": [
         {
           "title": "topleft",
           "type": "string"
@@ -273,8 +267,7 @@
           "title": "left",
           "type": "string"
         }
-      ],
-      "items": false
+      ]
     },
     "actionPickerLayoutParams": {
       "type": "object",
