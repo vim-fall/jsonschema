@@ -1,13 +1,14 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema#",
   "title": "PickerConfig",
-  "description": "The configuration for the picker.",
+  "description": "The configuration settings for the picker.",
   "type": "object",
   "properties": {
     "$schema": {
       "type": "string"
     },
     "source": {
+      "description": "A map of source picker configurations, where the key is the source name and the value is the configuration for that source's picker. An empty key represents the default configuration for all sources.",
       "type": "object",
       "additionalProperties": {
         "$ref": "#/$defs/sourcePickerConfig"
@@ -73,58 +74,59 @@
       ]
     },
     "sourcePickerLayoutParams": {
+      "description": "The layout settings for the source picker.",
       "type": "object",
       "properties": {
         "width": {
-          "description": "The fixed width of the entire source picker (including preview window). If not set, the width will be calculated based on the widthRatio and the width of the screen.",
+          "description": "The fixed width of the entire source picker (including preview window). If not set, the width is calculated based on the widthRatio and the screen width.",
           "type": "number"
         },
         "widthRatio": {
-          "description": "The width ratio of the entire source picker (including preview width).",
+          "description": "The ratio of the source picker's width (including preview window) relative to the screen width.",
           "type": "number"
         },
         "widthMin": {
-          "description": "The minimum width of the source picker when the widthRatio is set.",
+          "description": "The minimum width for the source picker when widthRatio is set.",
           "type": "number"
         },
         "widthMax": {
-          "description": "The maximum width of the source picker when the widthRatio is set.",
+          "description": "The maximum width for the source picker when widthRatio is set.",
           "type": "number"
         },
         "height": {
-          "description": "The fixed height of the source picker. If not set, the height will be calculated based on the heightRatio and the height of the screen.",
+          "description": "The fixed height of the source picker. If not set, the height is calculated based on the heightRatio and the screen height.",
           "type": "number"
         },
         "heightRatio": {
-          "description": "The height ratio of the source picker.",
+          "description": "The ratio of the source picker's height relative to the screen height.",
           "type": "number"
         },
         "heightMin": {
-          "description": "The minimum height of the source picker when the heightRatio is set.",
+          "description": "The minimum height for the source picker when heightRatio is set.",
           "type": "number"
         },
         "heightMax": {
-          "description": "The maximum height of the source picker when the heightRatio is set.",
+          "description": "The maximum height for the source picker when heightRatio is set.",
           "type": "number"
         },
         "previewWidth": {
-          "description": "The fixed width of the preview window of the source picker. If not set, the width will be calculated based on the previewWidthRatio and the width of the source picker.",
+          "description": "The fixed width of the source picker's preview window. If not set, the width is calculated based on previewWidthRatio and the source picker width.",
           "type": "number"
         },
         "previewWidthRatio": {
-          "description": "The width ratio of the preview window of the source picker.",
+          "description": "The ratio of the preview window's width relative to the source picker's width.",
           "type": "number"
         },
         "previewWidthMin": {
-          "description": "The minimum width of the preview window of the source picker when the previewWidthRatio is set.",
+          "description": "The minimum width for the preview window when previewWidthRatio is set.",
           "type": "number"
         },
         "previewWidthMax": {
-          "description": "The maximum width of the preview window of the source picker when the previewWidthRatio is set.",
+          "description": "The maximum width for the preview window when previewWidthRatio is set.",
           "type": "number"
         },
         "border": {
-          "description": "The border of the source picker.",
+          "description": "The border style for the source picker.",
           "oneOf": [
             {
               "$ref": "#/$defs/stringBorder"
@@ -135,103 +137,103 @@
           ]
         },
         "zindex": {
-          "description": "The z-index of the source picker.",
+          "description": "The z-index value for the source picker.",
           "type": "number"
         }
       },
       "additionalProperties": false
     },
     "sourcePickerConfig": {
+      "description": "The configuration settings for the source picker.",
       "type": "object",
       "properties": {
         "defaultAction": {
-          "description": "The default action to be performed.",
+          "description": "The default action to perform.",
           "type": "string"
         },
         "actions": {
-          "description": "The actions used for the source picker.",
+          "description": "The list of actions available in the source picker.",
           "type": "array",
           "items": {
             "type": "string"
           }
         },
         "previewer": {
-          "description": "The preview used for the source picker.",
+          "description": "The previewer to use in the source picker.",
           "type": "string"
         },
         "processors": {
-          "description": "The processors used for the source picker.",
+          "description": "The list of processors for the source picker.",
           "type": "array",
           "items": {
             "type": "string"
           }
         },
         "renderers": {
-          "description": "The renderers used for the source picker.",
+          "description": "The list of renderers for the source picker.",
           "type": "array",
           "items": {
             "type": "string"
           }
         },
         "options": {
-          "description": "The options used for the source picker.",
+          "description": "Additional options for the source picker.",
           "type": "object",
           "properties": {
             "layout": {
               "$ref": "#/$defs/sourcePickerLayoutParams"
             },
             "itemCollector": {
-              "description": "The item collector params for the source picker.",
+              "description": "Settings for the item collector.",
               "type": "object",
               "properties": {
                 "chunkSize": {
-                  "description": "The chunk size of the item collector.",
+                  "description": "The chunk size for the item collector.",
                   "type": "number"
                 }
               },
               "additionalProperties": false
             },
             "prompt": {
-              "description": "The prompt params for the source picker.",
+              "description": "Settings for the prompt.",
               "type": "object",
               "properties": {
                 "spinner": {
-                  "description": "The spinner used in the prompt.",
+                  "description": "The spinner symbols to use in the prompt.",
                   "type": "array",
                   "items": {
                     "type": "string"
                   }
                 },
                 "headSymbol": {
-                  "description": "The head symbol used in the prompt.",
+                  "description": "The head symbol for the prompt.",
                   "type": "string"
                 },
                 "failSymbol": {
-                  "description": "The fail symbol used in the prompt.",
+                  "description": "The symbol to show for failures in the prompt.",
                   "type": "string"
                 }
               },
               "additionalProperties": false
             },
             "preview": {
-              "description": "The preview params for the source picker.",
+              "description": "Settings for the preview.",
               "type": "object",
               "properties": {
                 "debounceWait": {
-                  "description": "The debounce wait (milli seconds) of the preview.",
+                  "description": "The debounce wait time (in milliseconds) for the preview.",
                   "type": "number"
                 }
               },
               "additionalProperties": false
             },
             "updateInterval": {
-              "description": "The update interval (milli seconds) of the source.",
+              "description": "The update interval (in milliseconds) for the source.",
               "type": "number"
             }
           },
           "additionalProperties": false
-        },
-        "additionalProperties": false
+        }
       },
       "additionalProperties": false
     },
@@ -273,42 +275,43 @@
       ]
     },
     "actionPickerLayoutParams": {
+      "description": "The layout settings for the action picker.",
       "type": "object",
       "properties": {
         "width": {
-          "description": "The fixed width of the action picker. If not set, the width will be calculated based on the widthRatio and the width of the screen.",
+          "description": "The fixed width of the action picker. If not set, calculated based on widthRatio and screen width.",
           "type": "number"
         },
         "widthRatio": {
-          "description": "The width ratio of the action picker.",
+          "description": "The ratio of the action picker's width relative to screen width.",
           "type": "number"
         },
         "widthMin": {
-          "description": "The minimum width of the action picker when the widthRatio is set.",
+          "description": "The minimum width for the action picker when widthRatio is set.",
           "type": "number"
         },
         "widthMax": {
-          "description": "The maximum width of the action picker when the widthRatio is set.",
+          "description": "The maximum width for the action picker when widthRatio is set.",
           "type": "number"
         },
         "height": {
-          "description": "The fixed height of the action picker. If not set, the height will be calculated based on the heightRatio and the height of the screen.",
+          "description": "The fixed height of the action picker. If not set, calculated based on heightRatio and screen height.",
           "type": "number"
         },
         "heightRatio": {
-          "description": "The height ratio of the action picker.",
+          "description": "The ratio of the action picker's height relative to screen height.",
           "type": "number"
         },
         "heightMin": {
-          "description": "The minimum height of the action picker when the heightRatio is set.",
+          "description": "The minimum height for the action picker when heightRatio is set.",
           "type": "number"
         },
         "heightMax": {
-          "description": "The maximum height of the action picker when the heightRatio is set.",
+          "description": "The maximum height for the action picker when heightRatio is set.",
           "type": "number"
         },
         "border": {
-          "description": "The border of the action picker.",
+          "description": "The border style for the action picker.",
           "oneOf": [
             {
               "$ref": "#/$defs/stringBorder"
@@ -319,60 +322,61 @@
           ]
         },
         "zindex": {
-          "description": "The z-index of the action picker.",
+          "description": "The z-index value for the action picker.",
           "type": "number"
         }
       },
       "additionalProperties": false
     },
     "actionPickerConfig": {
+      "description": "The configuration settings for the action picker.",
       "type": "object",
       "properties": {
         "processors": {
-          "description": "The processors used for the action picker.",
+          "description": "The list of processors for the action picker.",
           "type": "array",
           "items": {
             "type": "string"
           }
         },
         "renderers": {
-          "description": "The renderers used for the action picker.",
+          "description": "The list of renderers for the action picker.",
           "type": "array",
           "items": {
             "type": "string"
           }
         },
         "options": {
-          "description": "The options used for the action picker.",
+          "description": "Additional options for the action picker.",
           "type": "object",
           "properties": {
             "layout": {
               "$ref": "#/$defs/actionPickerLayoutParams"
             },
             "prompt": {
-              "description": "The prompt params for the action picker.",
+              "description": "Settings for the prompt.",
               "type": "object",
               "properties": {
                 "spinner": {
-                  "description": "The spinner used in the prompt.",
+                  "description": "The spinner symbols to use in the prompt.",
                   "type": "array",
                   "items": {
                     "type": "string"
                   }
                 },
                 "headSymbol": {
-                  "description": "The head symbol used in the prompt.",
+                  "description": "The head symbol for the prompt.",
                   "type": "string"
                 },
                 "failSymbol": {
-                  "description": "The fail symbol used in the prompt.",
+                  "description": "The symbol to show for failures in the prompt.",
                   "type": "string"
                 }
               },
               "additionalProperties": false
             },
             "updateInterval": {
-              "description": "The update interval (milli seconds) of the action picker.",
+              "description": "The update interval (in milliseconds) for the action picker.",
               "type": "number"
             }
           },
