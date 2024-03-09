@@ -7,6 +7,9 @@
     "$schema": {
       "type": "string"
     },
+    "$version": {
+      "const": "1"
+    },
     "source": {
       "description": "A map of source picker configurations, where the key is the source name and the value is the configuration for that source's picker. An empty key represents the default configuration for all sources.",
       "type": "object",

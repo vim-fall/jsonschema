@@ -7,6 +7,9 @@
     "$schema": {
       "type": "string"
     },
+    "$version": {
+      "const": "1"
+    },
     "action": {
       "description": "Configuration map for action extensions. The key is the action name and the value is the configuration for that action.",
       "type": "object",
