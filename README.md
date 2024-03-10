@@ -1,9 +1,19 @@
-# jsonschema
+# 📄 jsonschema
 
-[JSON schema] used to validate [fall.vim]'s configuration files.
+[JSON schema] collections represents [fall.vim]'s files.
 
 [JSON schema]: https://json-schema.org/
 [fall.vim]: https://github.com/vim-fall/fall.vim
 
-- [./v1/picker.schema.json](./v1/picker.schema.json) - JSON schema for `picker` configuration file.
-- [./v1/extension.schema.json](./v1/extension.schema.json) - JSON schema for `extension` configuration file.
+## Schemas
+
+- [Picker config](./src/v1/picker-config.schema.yaml)
+- [Extension config](./src/v1/extension-config.schema.yaml)
+- [Registry config](./src/v1/registry-config.schema.yaml)
+- [Package](./src/v1/package.schema.yaml)
+
+## License
+
+The code in this repository follows the MIT license, as detailed in
+[LICENSE](./LICENSE). Contributors must agree that any modifications submitted
+to this repository also adhere to the license.

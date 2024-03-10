@@ -1,0 +1,11 @@
+{
+  "lock": false,
+  "exclude": [
+    "dist/**"
+  ],
+  "tasks": {
+    "build": "deno run -A ./scripts/build.ts",
+    "upgrade": "deno run -q -A https://deno.land/x/molt@0.14.2/cli.ts ./**/*.ts",
+    "upgrade:commit": "deno task -q upgrade --commit --prefix :package: --pre-commit=fmt"
+  }
+}

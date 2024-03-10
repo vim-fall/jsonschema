@@ -1,0 +1,330 @@
+$schema: 'http://json-schema.org/draft-07/schema'
+description: |
+  The configuration settings for the picker.
+type: object
+required:
+  - $schema
+  - $version
+properties:
+  $schema:
+    type: string
+  $version:
+    const: '1-beta'
+  source:
+    description: |
+      A map of source picker configurations, where the key is the source name and the value is the configuration for that source's picker.
+      An empty key represents the default configuration for all sources.
+    type: object
+    additionalProperties:
+      $ref: '#/$defs/sourcePickerConfig'
+  action:
+    $ref: '#/$defs/actionPickerConfig'
+additionalProperties: false
+$defs:
+  stringBorder:
+    type: string
+    enum:
+      - none
+      - ascii
+      - single
+      - double
+      - rounded
+  sourcePickerLayoutBorder:
+    type: array
+    items:
+      - description: topleft
+        type: string
+      - description: top
+        type: string
+      - description: topright
+        type: string
+      - description: right
+        type: string
+      - description: botright
+        type: string
+      - description: bottom
+        type: string
+      - description: botleft
+        type: string
+      - description: left
+        type: string
+      - description: leftsep
+        type: string
+      - description: sep
+        type: string
+      - description: rightsep
+        type: string
+    minItems: 11
+    maxItems: 11
+  sourcePickerLayoutParams:
+    description: |
+      The layout settings for the source picker.
+    type: object
+    properties:
+      width:
+        description: |
+          The fixed width of the entire source picker (including preview window).
+          If not set, the width is calculated based on the widthRatio and the screen width.
+        type: number
+      widthRatio:
+        description: |
+          The ratio of the source picker's width (including preview window) relative to the screen width.
+        type: number
+      widthMin:
+        description: |
+          The minimum width for the source picker when widthRatio is set.
+        type: number
+      widthMax:
+        description: |
+          The maximum width for the source picker when widthRatio is set.
+        type: number
+      height:
+        description: |
+          The fixed height of the source picker. 
+          If not set, the height is calculated based on the heightRatio and the screen height.
+        type: number
+      heightRatio:
+        description: |
+          The ratio of the source picker's height relative to the screen height.
+        type: number
+      heightMin:
+        description: |
+          The minimum height for the source picker when heightRatio is set.
+        type: number
+      heightMax:
+        description: |
+          The maximum height for the source picker when heightRatio is set.
+        type: number
+      previewWidth:
+        description: |
+          The fixed width of the source picker's preview window. 
+          If not set, the width is calculated based on previewWidthRatio and the source picker width.
+        type: number
+      previewWidthRatio:
+        description: |
+          The ratio of the preview window's width relative to the source picker's width.
+        type: number
+      previewWidthMin:
+        description: |
+          The minimum width for the preview window when previewWidthRatio is set.
+        type: number
+      previewWidthMax:
+        description: |
+          The maximum width for the preview window when previewWidthRatio is set.
+        type: number
+      border:
+        description: |
+          The border style for the source picker.
+        oneOf:
+          - $ref: '#/$defs/stringBorder'
+          - $ref: '#/$defs/sourcePickerLayoutBorder'
+      zindex:
+        description: |
+          The z-index value for the source picker.
+        type: number
+    additionalProperties: false
+  sourcePickerConfig:
+    description: |
+      The configuration settings for the source picker.
+    type: object
+    properties:
+      defaultAction:
+        description: |
+          The default action to perform.
+        type: string
+      actions:
+        description: |
+          The list of actions available in the source picker.
+        type: array
+        items:
+          type: string
+      previewer:
+        description: |
+          The previewer to use in the source picker.
+        type: string
+      processors:
+        description: |
+          The list of processors for the source picker.
+        type: array
+        items:
+          type: string
+      renderers:
+        description: |
+          The list of renderers for the source picker.
+        type: array
+        items:
+          type: string
+      options:
+        description: |
+          Additional options for the source picker.
+        type: object
+        properties:
+          layout:
+            $ref: '#/$defs/sourcePickerLayoutParams'
+          itemCollector:
+            description: |
+              Settings for the item collector.
+            type: object
+            properties:
+              chunkSize:
+                description: |
+                  The chunk size for the item collector.
+                type: number
+            additionalProperties: false
+          prompt:
+            description: |
+              Settings for the prompt.
+            type: object
+            properties:
+              spinner:
+                description: |
+                  The spinner symbols to use in the prompt.
+                type: array
+                items:
+                  type: string
+              headSymbol:
+                description: |
+                  The head symbol for the prompt.
+                type: string
+              failSymbol:
+                description: |
+                  The symbol to show for failures in the prompt.
+                type: string
+            additionalProperties: false
+          preview:
+            description: |
+              Settings for the preview.
+            type: object
+            properties:
+              debounceWait:
+                description: |
+                  The debounce wait time (in milliseconds) for the preview.
+                type: number
+            additionalProperties: false
+          updateInterval:
+            description: |
+              The update interval (in milliseconds) for the source.
+            type: number
+        additionalProperties: false
+    additionalProperties: false
+  actionPickerLayoutBorder:
+    type: array
+    items:
+      - description: topleft
+        type: string
+      - description: top
+        type: string
+      - description: topright
+        type: string
+      - description: right
+        type: string
+      - description: botright
+        type: string
+      - description: bottom
+        type: string
+      - description: botleft
+        type: string
+      - description: left
+        type: string
+    minItems: 8
+    maxItems: 8
+  actionPickerLayoutParams:
+    description: |
+      The layout settings for the action picker.
+    type: object
+    properties:
+      width:
+        description: |
+          The fixed width of the action picker.
+          If not set, calculated based on widthRatio and screen width.
+        type: number
+      widthRatio:
+        description: |
+          The ratio of the action picker's width relative to screen width.
+        type: number
+      widthMin:
+        description: |
+          The minimum width for the action picker when widthRatio is set.
+        type: number
+      widthMax:
+        description: |
+          The maximum width for the action picker when widthRatio is set.
+        type: number
+      height:
+        description: |
+          The fixed height of the action picker.
+          If not set, calculated based on heightRatio and screen height.
+        type: number
+      heightRatio:
+        description: |
+          The ratio of the action picker's height relative to screen height.
+        type: number
+      heightMin:
+        description: |
+          The minimum height for the action picker when heightRatio is set.
+        type: number
+      heightMax:
+        description: |
+          The maximum height for the action picker when heightRatio is set.
+        type: number
+      border:
+        description: |
+          The border style for the action picker.
+        oneOf:
+          - $ref: '#/$defs/stringBorder'
+          - $ref: '#/$defs/actionPickerLayoutBorder'
+      zindex:
+        description: |
+          The z-index value for the action picker.
+        type: number
+    additionalProperties: false
+  actionPickerConfig:
+    description: |
+      The configuration settings for the action picker.
+    type: object
+    properties:
+      processors:
+        description: |
+          The list of processors for the action picker.
+        type: array
+        items:
+          type: string
+      renderers:
+        description: |
+          The list of renderers for the action picker.
+        type: array
+        items:
+          type: string
+      options:
+        description: |
+          Additional options for the action picker.
+        type: object
+        properties:
+          layout:
+            $ref: '#/$defs/actionPickerLayoutParams'
+          prompt:
+            description: |
+              Settings for the prompt.
+            type: object
+            properties:
+              spinner:
+                description: |
+                  The spinner symbols to use in the prompt.
+                type: array
+                items:
+                  type: string
+              headSymbol:
+                description: |
+                  The head symbol for the prompt.
+                type: string
+              failSymbol:
+                description: |
+                  The symbol to show for failures in the prompt.
+                type: string
+            additionalProperties: false
+          updateInterval:
+            description: |
+              The update interval (in milliseconds) for the action picker.
+            type: number
+        additionalProperties: false
+    additionalProperties: false

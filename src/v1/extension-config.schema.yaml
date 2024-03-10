@@ -1,0 +1,79 @@
+description: |
+  Configuration used to load extensions.
+type: object
+required:
+  - $schema
+  - $version
+properties:
+  $schema:
+    type: string
+  $version:
+    const: '1-beta'
+  action:
+    description: |
+      Configuration map for action extensions.
+      The key is the action name and the value is the configuration for that action.
+    type: object
+    additionalProperties:
+      $ref: '#/$defs/loaderConfig'
+  previewer:
+    description: |
+      Configuration map for previewer extensions.
+      The key is the previewer name and the value is the configuration for that previewer.
+    type: object
+    additionalProperties:
+      $ref: '#/$defs/loaderConfig'
+  processor:
+    description: |
+      Configuration map for processor extensions.
+      The key is the processor name and the value is the configuration for that processor.
+    type: object
+    additionalProperties:
+      $ref: '#/$defs/loaderConfig'
+  renderer:
+    description: |
+      Configuration map for renderer extensions.
+      The key is the renderer name and the value is the configuration for that renderer.
+    type: object
+    additionalProperties:
+      $ref: '#/$defs/loaderConfig'
+  source:
+    description: |
+      Configuration map for source extensions.
+      The key is the source name and the value is the configuration for that source.
+    type: object
+    additionalProperties:
+      $ref: '#/$defs/loaderConfig'
+additionalProperties: false
+
+$defs:
+  loaderConfig:
+    description: |
+      The configuration for loading an extension.
+    type: object
+    required:
+      - uri
+    properties:
+      uri:
+        description: |
+          The URI of the extension.
+          If the URI starts with 'builtin:', it refers to a built-in extension.
+        type: string
+      options:
+        $ref: '#/$defs/options'
+      variants:
+        $ref: '#/$defs/variants'
+  options:
+    description: |
+      An options object passed to the extension.
+      See the extension's documentation for valid options.
+    type: object
+  variants:
+    description: |
+      An object defining variants of the extension.
+      The key is the variant name and the value is the options object.
+      The variant name is prefixed to the extension name with a colon (:).
+    type: object
+    additionalProperties:
+      $ref: '#/$defs/options'
+$schema: 'http://json-schema.org/draft-07/schema'
