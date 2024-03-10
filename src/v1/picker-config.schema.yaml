@@ -1,24 +1,21 @@
-$schema: 'http://json-schema.org/draft-07/schema'
+$schema: "http://json-schema.org/draft-07/schema"
 description: |
   The configuration settings for the picker.
 type: object
 required:
   - $schema
-  - $version
 properties:
   $schema:
     type: string
-  $version:
-    const: '1-beta'
   source:
     description: |
       A map of source picker configurations, where the key is the source name and the value is the configuration for that source's picker.
       An empty key represents the default configuration for all sources.
     type: object
     additionalProperties:
-      $ref: '#/$defs/sourcePickerConfig'
+      $ref: "#/$defs/sourcePickerConfig"
   action:
-    $ref: '#/$defs/actionPickerConfig'
+    $ref: "#/$defs/actionPickerConfig"
 additionalProperties: false
 $defs:
   stringBorder:
@@ -116,8 +113,8 @@ $defs:
         description: |
           The border style for the source picker.
         oneOf:
-          - $ref: '#/$defs/stringBorder'
-          - $ref: '#/$defs/sourcePickerLayoutBorder'
+          - $ref: "#/$defs/stringBorder"
+          - $ref: "#/$defs/sourcePickerLayoutBorder"
       zindex:
         description: |
           The z-index value for the source picker.
@@ -160,7 +157,7 @@ $defs:
         type: object
         properties:
           layout:
-            $ref: '#/$defs/sourcePickerLayoutParams'
+            $ref: "#/$defs/sourcePickerLayoutParams"
           itemCollector:
             description: |
               Settings for the item collector.
@@ -271,8 +268,8 @@ $defs:
         description: |
           The border style for the action picker.
         oneOf:
-          - $ref: '#/$defs/stringBorder'
-          - $ref: '#/$defs/actionPickerLayoutBorder'
+          - $ref: "#/$defs/stringBorder"
+          - $ref: "#/$defs/actionPickerLayoutBorder"
       zindex:
         description: |
           The z-index value for the action picker.
@@ -301,7 +298,7 @@ $defs:
         type: object
         properties:
           layout:
-            $ref: '#/$defs/actionPickerLayoutParams'
+            $ref: "#/$defs/actionPickerLayoutParams"
           prompt:
             description: |
               Settings for the prompt.

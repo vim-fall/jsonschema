@@ -1,19 +1,16 @@
-$schema: 'http://json-schema.org/draft-07/schema'
+$schema: "http://json-schema.org/draft-07/schema"
 description: |
   Package registry
 type: object
 required:
   - $schema
-  - $version
 properties:
   $schema:
     type: string
-  $version:
-    const: '1-beta'
   package:
     type: object
     additionalProperties:
-      $ref: '#/$defs/package'
+      $ref: "#/$defs/package"
 additionalProperties: false
 $defs:
   package:
@@ -31,35 +28,35 @@ $defs:
           The key is the action name and the value is the definition of that action.
         type: object
         additionalProperties:
-          $ref: '#/$defs/packageExtension'
+          $ref: "#/$defs/packageExtension"
       previewer:
         description: |
           Definition map for previewer extensions.
           The key is the previewer name and the value is the definition of that previewer.
         type: object
         additionalProperties:
-          $ref: '#/$defs/packageExtension'
+          $ref: "#/$defs/packageExtension"
       processor:
         description: |
           Definition map for processor extensions. 
           The key is the processor name and the value is the definition of that processor.
         type: object
         additionalProperties:
-          $ref: '#/$defs/packageExtension'
+          $ref: "#/$defs/packageExtension"
       renderer:
         description: |
           Definition map for renderer extensions.
           The key is the renderer name and the value is the definition of that renderer.
         type: object
         additionalProperties:
-          $ref: '#/$defs/packageExtension'
+          $ref: "#/$defs/packageExtension"
       source:
         description: |
           Definition map for source extensions. 
           The key is the source name and the value is the definition of that source.
         type: object
         additionalProperties:
-          $ref: '#/$defs/packageExtension'
+          $ref: "#/$defs/packageExtension"
   packageExtension:
     description: Extension in the package
     type: object
@@ -72,9 +69,9 @@ $defs:
           If a relative URL is provided, it is resolved relative to the package's URL.
         type: string
       options:
-        $ref: '#/$defs/options'
+        $ref: "#/$defs/options"
       variants:
-        $ref: '#/$defs/variants'
+        $ref: "#/$defs/variants"
   options:
     description: |
       An options object passed to the extension.
@@ -87,4 +84,4 @@ $defs:
       The variant name is prefixed to the extension name with a colon (:).
     type: object
     additionalProperties:
-      $ref: '#/$defs/options'
+      $ref: "#/$defs/options"
