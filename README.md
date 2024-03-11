@@ -7,10 +7,10 @@
 
 ## Schemas
 
-- [Picker config](./src/v1/picker-config.schema.yaml)
-- [Extension config](./src/v1/extension-config.schema.yaml)
-- [Registry config](./src/v1/registry-config.schema.yaml)
-- [Package](./src/v1/package.schema.yaml)
+- [Picker config](./src/v1alpha/picker-config.schema.yaml)
+- [Extension config](./src/v1alpha/extension-config.schema.yaml)
+- [Registry config](./src/v1alpha/registry-config.schema.yaml)
+- [Package](./src/v1alpha/package.schema.yaml)
 
 ## License
 
