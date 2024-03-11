@@ -24,14 +24,13 @@ $defs:
       The configuration for loading an extension.
     type: object
     required:
-      - uri
+      - url
     properties:
-      uri:
+      url:
         description: |
-          The URI of the extension.
-          If the URI starts with 'builtin:', it refers to a built-in extension.
-          If the URI starts with 'package:', it refers to a package extension.
-          If the URI is relative, it is resolved against the configuration file.
+          The URL of the extension.
+          If the URL starts with 'fallbuiltin://', it refers to a built-in extension.
+          If the URL is relative, it is resolved against the configuration file.
         type: string
       options:
         $ref: "#/$defs/options"
