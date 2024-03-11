@@ -23,6 +23,7 @@ patternProperties:
     patternProperties:
       "^[a-zA-Z0-9_\\-]+$":
         $ref: "#/$defs/packageExtension"
+    additionalProperties: false
 additionalProperties: false
 $defs:
   packageExtension:
@@ -54,3 +55,4 @@ $defs:
     patternProperties:
       "^[a-zA-Z0-9_\\-:]+$":
         $ref: "#/$defs/options"
+    additionalProperties: false
