@@ -6,41 +6,15 @@ required:
 properties:
   $schema:
     type: string
-  action:
+patternProperties:
+  "^(action|previewer|processor|renderer|source)$":
     description: |
-      Configuration map for action extensions.
-      The key is the action name and the value is the configuration for that action.
+      Configuration map for the extensions of the kind.
+      The key is the name and the value is the configuration.
     type: object
-    additionalProperties:
-      $ref: "#/$defs/loaderConfig"
-  previewer:
-    description: |
-      Configuration map for previewer extensions.
-      The key is the previewer name and the value is the configuration for that previewer.
-    type: object
-    additionalProperties:
-      $ref: "#/$defs/loaderConfig"
-  processor:
-    description: |
-      Configuration map for processor extensions.
-      The key is the processor name and the value is the configuration for that processor.
-    type: object
-    additionalProperties:
-      $ref: "#/$defs/loaderConfig"
-  renderer:
-    description: |
-      Configuration map for renderer extensions.
-      The key is the renderer name and the value is the configuration for that renderer.
-    type: object
-    additionalProperties:
-      $ref: "#/$defs/loaderConfig"
-  source:
-    description: |
-      Configuration map for source extensions.
-      The key is the source name and the value is the configuration for that source.
-    type: object
-    additionalProperties:
-      $ref: "#/$defs/loaderConfig"
+    patternProperties:
+      "^[a-zA-Z0-9_\\-]+$":
+        $ref: "#/$defs/loaderConfig"
 additionalProperties: false
 
 $defs:
@@ -55,6 +29,8 @@ $defs:
         description: |
           The URI of the extension.
           If the URI starts with 'builtin:', it refers to a built-in extension.
+          If the URI starts with 'package:', it refers to a package extension.
+          If the URI is relative, it is resolved against the configuration file.
         type: string
       options:
         $ref: "#/$defs/options"
@@ -71,6 +47,7 @@ $defs:
       The key is the variant name and the value is the options object.
       The variant name is prefixed to the extension name with a colon (:).
     type: object
-    additionalProperties:
-      $ref: "#/$defs/options"
+    patternProperties:
+      "^[a-zA-Z0-9_\\-:]+$":
+        $ref: "#/$defs/options"
 $schema: "http://json-schema.org/draft-07/schema"

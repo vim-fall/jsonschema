@@ -14,85 +14,17 @@ properties:
       All relative URLs in the package are resolved relative to this URL.
       If no base is provided, the base is the URL of the package json file.
     type: string
-  action:
+patternProperties:
+  "^(action|previewer|processor|renderer|source)$":
     description: |
-      Definition map for action extensions.
-      The key is the action name and the value is the definition of that action.
+      Definition map for the extensions of the kind.
+      The key is the extension name and the value is the definition of that extension.
     type: object
-    additionalProperties:
-      $ref: "#/$defs/packageExtension"
-  previewer:
-    description: |
-      Definition map for previewer extensions.
-      The key is the previewer name and the value is the definition of that previewer.
-    type: object
-    additionalProperties:
-      $ref: "#/$defs/packageExtension"
-  processor:
-    description: |
-      Definition map for processor extensions.
-      The key is the processor name and the value is the definition of that processor.
-    type: object
-    additionalProperties:
-      $ref: "#/$defs/packageExtension"
-  renderer:
-    description: |
-      Definition map for renderer extensions.
-      The key is the renderer name and the value is the definition of that renderer.
-    type: object
-    additionalProperties:
-      $ref: "#/$defs/packageExtension"
-  source:
-    description: |
-      Definition map for source extensions.
-      The key is the source name and the value is the definition of that source.
-    type: object
-    additionalProperties:
-      $ref: "#/$defs/packageExtension"
+    patternProperties:
+      "^[a-zA-Z0-9_\\-]+$":
+        $ref: "#/$defs/packageExtension"
 additionalProperties: false
 $defs:
-  package:
-    base:
-      description: |
-        The base URL for the package.
-        All relative URLs in the package are resolved relative to this URL.
-        If no base is provided, the base is the URL of the package json file.
-      type: string
-    action:
-      description: >-
-        Definition map for action extensions.
-        The key is the action name and the value is the definition of that action.
-      type: object
-      additionalProperties:
-        $ref: "#/$defs/packageExtension"
-    previewer:
-      description: >-
-        Definition map for previewer extensions.
-        The key is the previewer name and the value is the definition of that previewer.
-      type: object
-      additionalProperties:
-        $ref: "#/$defs/packageExtension"
-    processor:
-      description: |
-        Definition map for processor extensions. 
-        The key is the processor name and the value is the definition of that processor.
-      type: object
-      additionalProperties:
-        $ref: "#/$defs/packageExtension"
-    renderer:
-      description: |
-        Definition map for renderer extensions.
-        The key is the renderer name and the value is the definition of that renderer.
-      type: object
-      additionalProperties:
-        $ref: "#/$defs/packageExtension"
-    source:
-      description: |
-        Definition map for source extensions. 
-        The key is the source name and the value is the definition of that source.
-      type: object
-      additionalProperties:
-        $ref: "#/$defs/packageExtension"
   packageExtension:
     description: Extension in the package
     type: object
@@ -102,7 +34,7 @@ $defs:
       url:
         description: |
           The URL of the extension.
-          If a relative URL is provided, it is resolved relative to the package's URL.
+          If the URL is relative, it is resolved against the package's base.
         type: string
       options:
         $ref: "#/$defs/options"
@@ -119,5 +51,6 @@ $defs:
       The key is the variant name and the value is the options object.
       The variant name is prefixed to the extension name with a colon (:).
     type: object
-    additionalProperties:
-      $ref: "#/$defs/options"
+    patternProperties:
+      "^[a-zA-Z0-9_\\-:]+$":
+        $ref: "#/$defs/options"
