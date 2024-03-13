@@ -26,7 +26,7 @@ $defs:
       - single
       - double
       - rounded
-  sourcePickerLayoutBorder:
+  pickerLayoutBorder:
     type: array
     items:
       - description: topleft
@@ -53,7 +53,7 @@ $defs:
         type: string
     minItems: 11
     maxItems: 11
-  sourcePickerLayoutParams:
+  pickerLayoutParams:
     description: |
       The layout settings for the source picker.
     type: object
@@ -114,7 +114,7 @@ $defs:
           The border style for the source picker.
         oneOf:
           - $ref: "#/$defs/stringBorder"
-          - $ref: "#/$defs/sourcePickerLayoutBorder"
+          - $ref: "#/$defs/pickerLayoutBorder"
       zindex:
         description: |
           The z-index value for the source picker.
@@ -171,7 +171,7 @@ $defs:
         type: object
         properties:
           layout:
-            $ref: "#/$defs/sourcePickerLayoutParams"
+            $ref: "#/$defs/pickerLayoutParams"
           itemCollector:
             description: |
               Settings for the item collector.
@@ -218,77 +218,6 @@ $defs:
             type: number
         additionalProperties: false
     additionalProperties: false
-  actionPickerLayoutBorder:
-    type: array
-    items:
-      - description: topleft
-        type: string
-      - description: top
-        type: string
-      - description: topright
-        type: string
-      - description: right
-        type: string
-      - description: botright
-        type: string
-      - description: bottom
-        type: string
-      - description: botleft
-        type: string
-      - description: left
-        type: string
-    minItems: 8
-    maxItems: 8
-  actionPickerLayoutParams:
-    description: |
-      The layout settings for the action picker.
-    type: object
-    properties:
-      width:
-        description: |
-          The fixed width of the action picker.
-          If not set, calculated based on widthRatio and screen width.
-        type: number
-      widthRatio:
-        description: |
-          The ratio of the action picker's width relative to screen width.
-        type: number
-      widthMin:
-        description: |
-          The minimum width for the action picker when widthRatio is set.
-        type: number
-      widthMax:
-        description: |
-          The maximum width for the action picker when widthRatio is set.
-        type: number
-      height:
-        description: |
-          The fixed height of the action picker.
-          If not set, calculated based on heightRatio and screen height.
-        type: number
-      heightRatio:
-        description: |
-          The ratio of the action picker's height relative to screen height.
-        type: number
-      heightMin:
-        description: |
-          The minimum height for the action picker when heightRatio is set.
-        type: number
-      heightMax:
-        description: |
-          The maximum height for the action picker when heightRatio is set.
-        type: number
-      border:
-        description: |
-          The border style for the action picker.
-        oneOf:
-          - $ref: "#/$defs/stringBorder"
-          - $ref: "#/$defs/actionPickerLayoutBorder"
-      zindex:
-        description: |
-          The z-index value for the action picker.
-        type: number
-    additionalProperties: false
   actionPickerConfig:
     description: |
       The configuration settings for the action picker.
@@ -300,6 +229,10 @@ $defs:
         type: array
         items:
           type: string
+      previewer:
+        description: |
+          The previewer to use for the action picker.
+        type: string
       renderers:
         description: |
           The list of renderers for the action picker.
@@ -318,7 +251,7 @@ $defs:
         type: object
         properties:
           layout:
-            $ref: "#/$defs/actionPickerLayoutParams"
+            $ref: "#/$defs/pickerLayoutParams"
           prompt:
             description: |
               Settings for the prompt.
@@ -338,6 +271,16 @@ $defs:
                 description: |
                   The symbol to show for failures in the prompt.
                 type: string
+            additionalProperties: false
+          preview:
+            description: |
+              Settings for the preview.
+            type: object
+            properties:
+              debounceWait:
+                description: |
+                  The debounce wait time (in milliseconds) for the preview.
+                type: number
             additionalProperties: false
           updateInterval:
             description: |
