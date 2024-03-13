@@ -7,7 +7,7 @@ properties:
   $schema:
     type: string
 patternProperties:
-  "^(action|previewer|processor|renderer|source)$":
+  "^(action|filter|previewer|renderer|sorter|source)$":
     description: |
       Configuration map for the extensions of the kind.
       The key is the name and the value is the configuration.

@@ -135,19 +135,25 @@ $defs:
         type: array
         items:
           type: string
-      previewer:
+      filters:
         description: |
-          The previewer to use in the source picker.
-        type: string
-      processors:
-        description: |
-          The list of processors for the source picker.
+          The list of filters available in the source picker.
         type: array
         items:
           type: string
+      previewer:
+        description: |
+          The previewer to use for the source picker.
+        type: string
       renderers:
         description: |
-          The list of renderers for the source picker.
+          The list of renderers applied to the source picker.
+        type: array
+        items:
+          type: string
+      sorters:
+        description: |
+          The list of sorters available in the source picker.
         type: array
         items:
           type: string
@@ -280,15 +286,21 @@ $defs:
       The configuration settings for the action picker.
     type: object
     properties:
-      processors:
+      filters:
         description: |
-          The list of processors for the action picker.
+          The list of filters available in the action picker.
         type: array
         items:
           type: string
       renderers:
         description: |
           The list of renderers for the action picker.
+        type: array
+        items:
+          type: string
+      sorters:
+        description: |
+          The list of sorters available in the action picker.
         type: array
         items:
           type: string

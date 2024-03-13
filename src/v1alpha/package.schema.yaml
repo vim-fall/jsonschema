@@ -15,7 +15,7 @@ properties:
       If no base is provided, the base is the URL of the package json file.
     type: string
 patternProperties:
-  "^(action|previewer|processor|renderer|source)$":
+  "^(action|filter|previewer|renderer|sorter|source)$":
     description: |
       Definition map for the extensions of the kind.
       The key is the extension name and the value is the definition of that extension.
