@@ -125,6 +125,14 @@ $defs:
       The configuration settings for the source picker.
     type: object
     properties:
+      actionAlias:
+        description: |
+          The action alias to use for the source picker.
+          The key is the real action name and the value is the alias.
+          Note that the alias is only used in the action picker.
+        type: object
+        additionalProperties:
+          type: string
       defaultAction:
         description: |
           The default action to perform.
