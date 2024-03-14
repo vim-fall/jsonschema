@@ -111,22 +111,9 @@ $defs:
         description: |
           The maximum height for the source picker when heightRatio is set.
         type: number
-      previewWidth:
+      previewRatio:
         description: |
-          The fixed width of the source picker's preview window. 
-          If not set, the width is calculated based on previewWidthRatio and the source picker width.
-        type: number
-      previewWidthRatio:
-        description: |
-          The ratio of the preview window's width relative to the source picker's width.
-        type: number
-      previewWidthMin:
-        description: |
-          The minimum width for the preview window when previewWidthRatio is set.
-        type: number
-      previewWidthMax:
-        description: |
-          The maximum width for the preview window when previewWidthRatio is set.
+          The ratio of the preview window's size relative to the source picker.
         type: number
       border:
         description: |
