@@ -26,6 +26,14 @@ $defs:
       - single
       - double
       - rounded
+  stringDivider:
+    type: string
+    enum:
+      - none
+      - ascii
+      - single
+      - double
+      - dashed
   pickerLayoutBorder:
     type: array
     items:
@@ -45,14 +53,25 @@ $defs:
         type: string
       - description: left
         type: string
-      - description: leftsep
+    minItems: 8
+    maxItems: 8
+  pickerLayoutDivider:
+    type: array
+    items:
+      - description: left
         type: string
-      - description: sep
+      - description: horizontal
         type: string
-      - description: rightsep
+      - description: right
         type: string
-    minItems: 11
-    maxItems: 11
+      - description: top
+        type: string
+      - description: vertical
+        type: string
+      - description: bottom
+        type: string
+    minItems: 6
+    maxItems: 6
   pickerLayoutParams:
     description: |
       The layout settings for the source picker.
@@ -115,6 +134,12 @@ $defs:
         oneOf:
           - $ref: "#/$defs/stringBorder"
           - $ref: "#/$defs/pickerLayoutBorder"
+      divider:
+        description: |
+          The divider style for the source picker.
+        oneOf:
+          - $ref: "#/$defs/stringDivider"
+          - $ref: "#/$defs/pickerLayoutDivider"
       zindex:
         description: |
           The z-index value for the source picker.
