@@ -1,16 +1,13 @@
 # 📄 jsonschema
 
-[JSON schema] collections represents [fall.vim]'s files.
+[JSON schema] collections represents [fall]'s files.
 
 [JSON schema]: https://json-schema.org/
-[fall.vim]: https://github.com/vim-fall/fall.vim
+[fall]: https://github.com/vim-fall/vim-fall
 
 ## Schemas
 
-- [Picker config](./src/v1alpha/picker-config.schema.yaml)
-- [Extension config](./src/v1alpha/extension-config.schema.yaml)
-- [Registry config](./src/v1alpha/registry-config.schema.yaml)
-- [Package](./src/v1alpha/package.schema.yaml)
+- [Config](./src/v1alpha/config.schema.yaml)
 
 ## License
 

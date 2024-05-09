@@ -1,0 +1,117 @@
+description: |
+  Configuration of Fall
+type: object
+required:
+  - $schema
+additionalProperties: false
+properties:
+  $schema:
+    type: string
+  picker:
+    $ref: "#/$defs/pickerConfig"
+patternProperties:
+  "^(source|filter|sorter|renderer|previewer|action)$":
+    description: |
+      Configuration map for the extensions of the kind.
+      The key is the name and the value is the configuration.
+    type: object
+    additionalProperties: false
+    patternProperties:
+      "^[a-zA-Z0-9_\\-]+$":
+        $ref: "#/$defs/options"
+
+$defs:
+  options:
+    description: |
+      An options object passed to the extension.
+      See the extension's documentation for valid options.
+    type: object
+  sourcePickerConfig:
+    description: |
+      The configuration settings for the source picker.
+    type: object
+    additionalProperties: false
+    properties:
+      filters:
+        description: |
+          The list of filters available in the source picker.
+        type: array
+        items:
+          type: string
+      sorters:
+        description: |
+          The list of sorters available in the source picker.
+        type: array
+        items:
+          type: string
+      renderers:
+        description: |
+          The list of renderers available in the source picker.
+        type: array
+        items:
+          type: string
+      previewers:
+        description: |
+          The list of previewers available in the source picker.
+        type: array
+        items:
+          type: string
+      actions:
+        description: |
+          The list of actions available in the source picker.
+        type: array
+        items:
+          type: string
+      defaultAction:
+        description: |
+          The default action to perform.
+        type: string
+  actionPickerConfig:
+    description: |
+      The configuration settings for the action picker.
+    type: object
+    additionalProperties: false
+    properties:
+      filters:
+        description: |
+          The list of filters available in the source picker.
+        type: array
+        items:
+          type: string
+      sorters:
+        description: |
+          The list of sorters available in the source picker.
+        type: array
+        items:
+          type: string
+      renderers:
+        description: |
+          The list of renderers available in the source picker.
+        type: array
+        items:
+          type: string
+      previewers:
+        description: |
+          The list of previewers available in the source picker.
+        type: array
+        items:
+          type: string
+  pickerConfig:
+    description: |
+      The configuration settings for the picker.
+    type: object
+    additionalProperties: false
+    properties:
+      source:
+        type: object
+        additionalProperties: false
+        patternProperties:
+          "^[a-zA-Z0-9_\\-]+$":
+            $ref: "#/$defs/sourcePickerConfig"
+      action:
+        type: object
+        additionalProperties: false
+        patternProperties:
+          "^[a-zA-Z0-9_\\-]+$":
+            $ref: "#/$defs/actionPickerConfig"
+$schema: "http://json-schema.org/draft-07/schema"
