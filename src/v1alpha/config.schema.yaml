@@ -66,6 +66,58 @@ $defs:
         description: |
           The default action to perform.
         type: string
+      options:
+        description: |
+          Additional options for the source picker
+        type: object
+        additionalProperties: false
+        properties:
+          layout:
+            $ref: "#/$defs/pickerLayoutParams"
+          itemCollector:
+            description: |
+              Settings for the item collector.
+            type: object
+            additionalProperties: false
+            properties:
+              chunkSize:
+                description: |
+                  The chunk size for the item collector.
+                type: number
+          prompt:
+            description: |
+              Settings for the prompt.
+            type: object
+            additionalProperties: false
+            properties:
+              spinner:
+                description: |
+                  The spinner symbols to use in the prompt.
+                type: array
+                items:
+                  type: string
+              headSymbol:
+                description: |
+                  The head symbol for the prompt.
+                type: string
+              failSymbol:
+                description: |
+                  The symbol to show for failures in the prompt.
+                type: string
+          preview:
+            description: |
+              Settings for the preview.
+            type: object
+            additionalProperties: false
+            properties:
+              debounceWait:
+                description: |
+                  The debounce wait time (in milliseconds) for the preview.
+                type: number
+          updateInterval:
+            description: |
+              The update interval (in milliseconds) for the source.
+            type: number
   actionPickerConfig:
     description: |
       The configuration settings for the action picker.
@@ -96,6 +148,48 @@ $defs:
         type: array
         items:
           type: string
+      options:
+        description: |
+          Additional options for the source picker
+        type: object
+        additionalProperties: false
+        properties:
+          layout:
+            $ref: "#/$defs/pickerLayoutParams"
+          prompt:
+            description: |
+              Settings for the prompt.
+            type: object
+            additionalProperties: false
+            properties:
+              spinner:
+                description: |
+                  The spinner symbols to use in the prompt.
+                type: array
+                items:
+                  type: string
+              headSymbol:
+                description: |
+                  The head symbol for the prompt.
+                type: string
+              failSymbol:
+                description: |
+                  The symbol to show for failures in the prompt.
+                type: string
+          preview:
+            description: |
+              Settings for the preview.
+            type: object
+            additionalProperties: false
+            properties:
+              debounceWait:
+                description: |
+                  The debounce wait time (in milliseconds) for the preview.
+                type: number
+          updateInterval:
+            description: |
+              The update interval (in milliseconds) for the source.
+            type: number
   pickerConfig:
     description: |
       The configuration settings for the picker.
@@ -114,4 +208,118 @@ $defs:
         patternProperties:
           "^[a-zA-Z0-9_\\-:]*$":
             $ref: "#/$defs/actionPickerConfig"
+  stringBorder:
+    type: string
+    enum:
+      - none
+      - ascii
+      - single
+      - double
+      - rounded
+  stringDivider:
+    type: string
+    enum:
+      - none
+      - ascii
+      - single
+      - double
+      - dashed
+  pickerLayoutBorder:
+    type: array
+    items:
+      - description: topleft
+        type: string
+      - description: top
+        type: string
+      - description: topright
+        type: string
+      - description: right
+        type: string
+      - description: botright
+        type: string
+      - description: bottom
+        type: string
+      - description: botleft
+        type: string
+      - description: left
+        type: string
+    minItems: 8
+    maxItems: 8
+  pickerLayoutDivider:
+    type: array
+    items:
+      - description: left
+        type: string
+      - description: horizontal
+        type: string
+      - description: right
+        type: string
+      - description: top
+        type: string
+      - description: vertical
+        type: string
+      - description: bottom
+        type: string
+    minItems: 6
+    maxItems: 6
+  pickerLayoutParams:
+    description: |
+      The layout settings for the source picker.
+    type: object
+    additionalProperties: false
+    properties:
+      width:
+        description: |
+          The fixed width of the entire source picker (including preview window).
+          If not set, the width is calculated based on the widthRatio and the screen width.
+        type: number
+      widthRatio:
+        description: |
+          The ratio of the source picker's width (including preview window) relative to the screen width.
+        type: number
+      widthMin:
+        description: |
+          The minimum width for the source picker when widthRatio is set.
+        type: number
+      widthMax:
+        description: |
+          The maximum width for the source picker when widthRatio is set.
+        type: number
+      height:
+        description: |
+          The fixed height of the source picker. 
+          If not set, the height is calculated based on the heightRatio and the screen height.
+        type: number
+      heightRatio:
+        description: |
+          The ratio of the source picker's height relative to the screen height.
+        type: number
+      heightMin:
+        description: |
+          The minimum height for the source picker when heightRatio is set.
+        type: number
+      heightMax:
+        description: |
+          The maximum height for the source picker when heightRatio is set.
+        type: number
+      previewRatio:
+        description: |
+          The ratio of the preview window's size relative to the source picker.
+        type: number
+      border:
+        description: |
+          The border style for the source picker.
+        oneOf:
+          - $ref: "#/$defs/stringBorder"
+          - $ref: "#/$defs/pickerLayoutBorder"
+      divider:
+        description: |
+          The divider style for the source picker.
+        oneOf:
+          - $ref: "#/$defs/stringDivider"
+          - $ref: "#/$defs/pickerLayoutDivider"
+      zindex:
+        description: |
+          The z-index value for the source picker.
+        type: number
 $schema: "http://json-schema.org/draft-07/schema"
