@@ -10,7 +10,7 @@ properties:
   picker:
     $ref: "#/$defs/pickerConfig"
 patternProperties:
-  "^(source|filter|sorter|renderer|previewer|action)$":
+  "^(source|transformer|projector|renderer|previewer|action)$":
     description: |
       Configuration map for the extensions of the kind.
       The key is the name and the value is the configuration.
@@ -32,13 +32,13 @@ $defs:
     type: object
     additionalProperties: false
     properties:
-      filters:
+      transformers:
         description: |
           The list of filters available in the source picker.
         type: array
         items:
           type: string
-      sorters:
+      projectors:
         description: |
           The list of sorters available in the source picker.
         type: array
@@ -124,13 +124,13 @@ $defs:
     type: object
     additionalProperties: false
     properties:
-      filters:
+      transformers:
         description: |
           The list of filters available in the source picker.
         type: array
         items:
           type: string
-      sorters:
+      projectors:
         description: |
           The list of sorters available in the source picker.
         type: array
